@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌌 ULAS: Universal Life Action System
 
 **ULAS** is a high-performance, multi-sector intelligence engine designed to bridge the gap between complex information and real-world action. By deploying a proprietary **7-Layer Intelligence Pipeline**, ULAS provides structured, actionable insights across Government, Education, Jobs, Finance, Healthcare, Legal, and Daily Utility sectors.
@@ -98,6 +99,25 @@ The application will be live at: **[http://localhost:8000](http://localhost:8000
     *   **Maps**: Markers are placed using randomized offsets near the user's location with detailed service profiles.
 6.  **User Action**: The user follows the generated execution steps and contacts the suggested service providers directly.
 
+### 🔄 System Workflow Diagram
+
+```mermaid
+graph TD
+    A[User Selection: Sector + Query] --> B[Frontend: POST /api/analyze]
+    B --> C[Backend: main.py]
+    C --> D[AI Engine: ai_engine.py]
+    D --> E[OpenRouter: Gemini 2.0 Flash]
+    E --> F[7-Layer JSON Response]
+    F --> G[Backend: Data Cleaning & Validation]
+    G --> H[Frontend: UI Orchestration]
+    H --> I[Charts: Chart.js]
+    H --> J[Maps: Leaflet.js]
+    H --> K[Content: DOM Rendering]
+    I --> L[User Decision & Action]
+    J --> L
+    K --> L
+```
+
 ---
 
 ## 🛡️ Security Note
@@ -106,3 +126,6 @@ All API keys are managed through environment variables. **Never** push your `.en
 ---
 
 **Developed for the Hackathon by Antigravity** 🚀
+=======
+# Universal-Life-Action-System
+>>>>>>> 6d864ab67244f2139f4b0dfe4e5052c10993ba70
