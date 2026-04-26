@@ -125,7 +125,9 @@ All API keys are managed through environment variables. **Never** push your `.en
 
 ---
 
-**Developed for the Hackathon by Antigravity** 🚀
-=======
-# Universal-Life-Action-System
->>>>>>> 6d864ab67244f2139f4b0dfe4e5052c10993ba70
+## 📜 License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+**Developed for the Hackathon by [Hemadri Kaligiri](https://github.com/hemadrikaligiri4-source) 🚀**
