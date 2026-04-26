@@ -1,0 +1,160 @@
+:root {
+    --bg-main: #0a0b14;
+    --card-bg: #161b22;
+    --card-border: rgba(255, 255, 255, 0.05);
+    --text-primary: #ffffff;
+    --text-secondary: #8b949e;
+    --accent-blue: #238636;
+    --govt-color: #58a6ff;
+    --edu-color: #3fb950;
+    --job-color: #f0883e;
+    --fin-color: #d29922;
+    --health-color: #f85149;
+    --legal-color: #a371f7;
+    --util-color: #db6d28;
+    --font-main: 'Outfit', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); }
+body { background-color: var(--bg-main); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.hidden { display: none !important; }
+
+/* Top Nav */
+.top-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; margin-bottom: 40px; }
+.logo { font-size: 24px; font-weight: 800; }
+.nav-btn { background: transparent; color: white; border: 1px solid var(--card-border); padding: 8px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-left: 10px; transition: var(--transition); }
+.nav-btn.primary { background: #1f6feb; border: none; }
+
+/* Search Interface - REPLICATING THE CLEAN DARK STYLE */
+.search-container { 
+    background: var(--card-bg); 
+    border: 1px solid var(--card-border); 
+    border-radius: 20px; 
+    padding: 32px; 
+    margin-bottom: 32px; 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.input-group { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px; 
+}
+.search-input-wrapper { 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    width: 100%;
+}
+.search-input-wrapper i { 
+    position: absolute; 
+    left: 24px; 
+    color: var(--text-secondary); 
+    z-index: 10;
+}
+.search-container input { 
+    width: 100%; 
+    background: #0d1117; 
+    border: 1px solid var(--card-border); 
+    border-radius: 12px; 
+    padding: 20px 24px 20px 64px; 
+    color: white; 
+    font-size: 16px;
+    outline: none; 
+    transition: var(--transition);
+}
+.search-container input:focus { border-color: var(--govt-color); box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.1); }
+
+.search-actions { 
+    display: flex; 
+    gap: 16px; 
+    align-items: center;
+}
+.location-input { flex: 1; }
+.analyze-btn { 
+    background: #1f6feb; 
+    color: white; 
+    border: none; 
+    border-radius: 12px; 
+    padding: 18px 40px; 
+    font-weight: 700; 
+    font-size: 16px;
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.analyze-btn:hover { background: #388bfd; transform: translateY(-2px); }
+
+/* Quick Actions Chips */
+.quick-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.action-chip { 
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid var(--card-border); 
+    border-radius: 20px; 
+    padding: 10px 24px; 
+    font-size: 14px; 
+    color: var(--text-secondary); 
+    cursor: pointer; 
+    transition: var(--transition);
+}
+.action-chip:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--govt-color); color: white; }
+
+/* Rest of the styles... */
+.home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; }
+.sector-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; cursor: pointer; transition: var(--transition); }
+.sector-card:hover { transform: translateY(-8px); border-color: rgba(255, 255, 255, 0.2); }
+.card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+.explore-link { display: flex; align-items: center; gap: 8px; color: var(--govt-color); font-weight: 500; margin-top: 20px; }
+
+.sector-header { margin-bottom: 40px; }
+.back-btn { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); cursor: pointer; margin-bottom: 20px; }
+.sector-title-area { display: flex; align-items: center; gap: 20px; }
+.sector-title-area h1 { font-size: 40px; font-weight: 700; }
+
+.results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+.full-width { grid-column: 1 / -1; }
+.layer-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; }
+.layer-card h3 { font-size: 14px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+
+.profile-suggestions-list { display: flex; flex-direction: column; gap: 15px; }
+.profile-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; }
+.profile-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.profile-name { font-size: 18px; font-weight: 700; color: var(--govt-color); }
+.profile-cost { background: rgba(88, 166, 255, 0.1); color: var(--govt-color); padding: 4px 10px; border-radius: 6px; font-size: 12px; }
+.profile-details { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; color: var(--text-secondary); margin-top: 10px; }
+.profile-bio { font-size: 14px; opacity: 0.8; margin-top: 10px; line-height: 1.4; }
+
+.chart-wrapper { height: 300px; width: 100%; position: relative; }
+#map { height: 400px; border-radius: 12px; background: #0d1117; }
+.leaflet-popup-content-wrapper { background: var(--card-bg) !important; color: white !important; border: 1px solid var(--card-border); }
+
+.modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 2000; display: flex; justify-content: center; align-items: center; }
+.modal-content { width: 400px; padding: 40px; border-radius: 20px; }
+.auth-submit { width: 100%; background: #1f6feb; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+.loader-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 11, 20, 0.9); z-index: 3000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.spinner { width: 50px; height: 50px; border: 4px solid rgba(88, 166, 255, 0.1); border-top-color: #58a6ff; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.card-govt .card-icon { background: #3355ff; }
+.card-edu .card-icon { background: #00c853; }
+.card-job .card-icon { background: #ff9100; }
+.card-fin .card-icon { background: #ffd600; }
+.card-health .card-icon { background: #ff1744; }
+.card-legal .card-icon { background: #6200ea; }
+.card-util .card-icon { background: #757575; }
+
+@media (max-width: 768px) { 
+    .top-nav { flex-direction: column; gap: 20px; text-align: center; }
+    .search-actions { flex-direction: column; width: 100%; }
+    .analyze-btn { width: 100%; justify-content: center; }
+    .home-grid, .results-grid { grid-template-columns: 1fr; } 
+    .modal-content { width: 90%; padding: 20px; }
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULAS | Universal Life Action System</title>
+    <meta name="description" content="Production-grade 7-layer intelligence engine with integrated authentication, mapping, and data visualization.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="logo">ULAS <span class="accent">v2.0</span></div>
+            <div class="auth-buttons">
+                <button id="login-btn" class="nav-btn">Login</button>
+                <button id="register-btn" class="nav-btn primary">Register</button>
+                <div id="user-profile" class="hidden">
+                    <span id="username-display"></span>
+                    <button id="logout-btn" class="nav-btn small">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Page View -->
+        <div id="home-view" class="view view-home">
+            <header style="margin-bottom: 60px;">
+                <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 10px;">Universal <span style="color: #58a6ff;">Life Action</span> System</h1>
+                <p style="color: #8b949e; font-size: 20px;">Deploying AI Intelligence, Mapping, and Visualization across all sectors.</p>
+            </header>
+
+            <div class="home-grid">
+                <div class="sector-card card-govt" data-sector="Government">
+                    <div class="card-icon"><i data-lucide="landmark"></i></div>
+                    <h2>Government</h2>
+                    <p>CSC, MeeSeva, Govt offices, eligibility & tracking</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="sector-card card-edu" data-sector="Education">
+                    <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
+                    <h2>Education</h2>
+                    <p>Courses, career roadmap, skill trends & institutes</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="sector-card card-job" data-sector="Jobs">
+                    <div class="card-icon"><i data-lucide="briefcase"></i></div>
+                    <h2>Jobs & Career</h2>
+                    <p>Job search, salary data, skill gaps & apply links</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="sector-card card-fin" data-sector="Finance">
+                    <div class="card-icon"><i data-lucide="wallet"></i></div>
+                    <h2>Finance</h2>
+                    <p>Banking, loans, EMI, insurance & risk analysis</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="sector-card card-health" data-sector="Healthcare">
+                    <div class="card-icon"><i data-lucide="heart-pulse"></i></div>
+                    <h2>Healthcare</h2>
+                    <p>Hospitals, doctors, treatment costs & emergency care</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="sector-card card-legal" data-sector="Legal">
+                    <div class="card-icon"><i data-lucide="scale"></i></div>
+                    <h2>Legal</h2>
+                    <p>FIR filing, lawyers, courts & legal documentation</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="sector-card card-util" data-sector="Utility">
+                    <div class="card-icon"><i data-lucide="wrench"></i></div>
+                    <h2>Daily Utility</h2>
+                    <p>Electricity, water, internet, mobile & home services</p>
+                    <div class="explore-link">Explore <i data-lucide="chevron-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sector Detail View -->
+        <div id="sector-view" class="view view-sector hidden">
+            <div class="back-btn" id="back-to-home"><i data-lucide="arrow-left"></i> All Sectors</div>
+            <header class="sector-header">
+                <div class="sector-title-area">
+                    <div class="card-icon" id="header-icon"></div>
+                    <div>
+                        <h1 id="header-title">Sector Name</h1>
+                        <p id="header-desc">Sector description goes here.</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="search-container">
+                <div class="input-group">
+                    <div class="search-input-wrapper">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="query-input" placeholder="Describe what you need help with...">
+                    </div>
+                    <div class="search-actions">
+                        <div class="search-input-wrapper location-input">
+                            <i data-lucide="map-pin"></i>
+                            <input type="text" id="location-input" placeholder="Your city or area (optional)">
+                        </div>
+                        <button class="analyze-btn" id="analyze-btn"><i data-lucide="sparkles"></i> Analyze</button>
+                    </div>
+                </div>
+                <div class="quick-actions" id="quick-actions"></div>
+            </div>
+
+            <!-- Intelligence Results Area -->
+            <div id="results-area" class="hidden">
+                <div class="results-grid">
+                    <div class="layer-card" id="layer-kb">
+                        <h3><i data-lucide="book-open"></i> Knowledge Layer</h3>
+                        <div class="content"></div>
+                    </div>
+                    <div class="layer-card" id="layer-decision">
+                        <h3><i data-lucide="check-circle"></i> Decision Engine</h3>
+                        <div class="content"></div>
+                    </div>
+                    
+                    <div class="layer-card full-width">
+                        <h3><i data-lucide="bar-chart-3"></i> Intelligence Visualization</h3>
+                        <div class="chart-wrapper"><canvas id="intelligence-chart"></canvas></div>
+                    </div>
+
+                    <!-- NEW: Profile Suggestions Section -->
+                    <div class="layer-card full-width" id="layer-profiles">
+                        <h3><i data-lucide="users"></i> Expert Profile Suggestions (Based on Location)</h3>
+                        <div class="profile-suggestions-list"></div>
+                    </div>
+
+                    <div class="layer-card" id="layer-cost">
+                        <h3><i data-lucide="banknote"></i> Cost Intelligence</h3>
+                        <div class="content"></div>
+                    </div>
+                    <div class="layer-card" id="layer-time">
+                        <h3><i data-lucide="clock"></i> Time Engine</h3>
+                        <div class="content"></div>
+                    </div>
+
+                    <div class="layer-card full-width" id="layer-execution">
+                        <h3><i data-lucide="list-checks"></i> Execution Engine</h3>
+                        <div class="workflow-list"></div>
+                    </div>
+
+                    <!-- SPLIT LAYOUT: Map (Left) and Resources (Right) -->
+                    <div class="layer-card">
+                        <h3><i data-lucide="map"></i> Real-World Services</h3>
+                        <div id="map"></div>
+                    </div>
+                    <div class="layer-card" id="layer-resources">
+                        <h3><i data-lucide="link"></i> Related Resource Mapping</h3>
+                        <div class="resource-links"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal-overlay hidden">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h2 id="modal-title">Welcome Back</h2>
+                <button id="close-auth" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div class="form-group"><label>Email Address</label><input type="email" id="auth-email" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="auth-password" required></div>
+                    <button type="submit" id="auth-submit-btn" class="auth-submit">Sign In</button>
+                </form>
+                <p class="auth-toggle">Don't have an account? <a href="#" id="toggle-auth">Register here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader" class="loader-overlay hidden"><div class="spinner"></div><p>Orchestrating 7-Layer Intelligence Pipeline...</p></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
